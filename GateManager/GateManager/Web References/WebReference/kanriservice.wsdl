@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistEnter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Person" type="tns:PersonInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PersonInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CardID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Affiliation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Purpose" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestRooms" type="tns:ArrayOfInt" />
+          <s:element minOccurs="1" maxOccurs="1" name="Dose" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RegistDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnterDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="GateID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Registered" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Entered" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="LangType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegistEnterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistEnterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistExit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="person" type="tns:PersonInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="RoomID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistExitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistExitResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GateEnter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="person" type="tns:PersonInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="RoomID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GateEnterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GateEnterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GateExit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="person" type="tns:PersonInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GateExitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GateExitResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEnterPerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CardID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEnterPersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEnterPersonResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersonInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CardID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersonInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPersonInfoResult" type="tns:PersonInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPurposes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPurposesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPurposesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRooms">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRoomsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoomsResult" type="tns:RoomsInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RoomsInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RoomCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomID" type="tns:ArrayOfInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomName" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomNameEng" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="GateID" type="tns:ArrayOfInt" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PutCreatedCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CardID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutCreatedCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PutCreatedCardResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsThisAllow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CardID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RoomID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsThisAllowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsThisAllowResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllowEnterRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CardID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RoomID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllowEnterRoomResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AllowEnterRoomResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountEnteredPerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RoomID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountEnteredPersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CountEnteredPersonResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CardID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RoomID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistRoomResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExistRoomResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListAllowRooms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CardID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListAllowRoomsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListAllowRoomsResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistEnterSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistEnter" />
+  </wsdl:message>
+  <wsdl:message name="RegistEnterSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistEnterResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistExitSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistExit" />
+  </wsdl:message>
+  <wsdl:message name="RegistExitSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistExitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GateEnterSoapIn">
+    <wsdl:part name="parameters" element="tns:GateEnter" />
+  </wsdl:message>
+  <wsdl:message name="GateEnterSoapOut">
+    <wsdl:part name="parameters" element="tns:GateEnterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GateExitSoapIn">
+    <wsdl:part name="parameters" element="tns:GateExit" />
+  </wsdl:message>
+  <wsdl:message name="GateExitSoapOut">
+    <wsdl:part name="parameters" element="tns:GateExitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEnterPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEnterPerson" />
+  </wsdl:message>
+  <wsdl:message name="GetEnterPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEnterPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPersonInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPersonInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPurposesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPurposes" />
+  </wsdl:message>
+  <wsdl:message name="GetPurposesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPurposesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRooms" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PutCreatedCardSoapIn">
+    <wsdl:part name="parameters" element="tns:PutCreatedCard" />
+  </wsdl:message>
+  <wsdl:message name="PutCreatedCardSoapOut">
+    <wsdl:part name="parameters" element="tns:PutCreatedCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsThisAllowSoapIn">
+    <wsdl:part name="parameters" element="tns:IsThisAllow" />
+  </wsdl:message>
+  <wsdl:message name="IsThisAllowSoapOut">
+    <wsdl:part name="parameters" element="tns:IsThisAllowResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllowEnterRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:AllowEnterRoom" />
+  </wsdl:message>
+  <wsdl:message name="AllowEnterRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:AllowEnterRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="CountEnteredPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:CountEnteredPerson" />
+  </wsdl:message>
+  <wsdl:message name="CountEnteredPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:CountEnteredPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExistRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:ExistRoom" />
+  </wsdl:message>
+  <wsdl:message name="ExistRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:ExistRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListAllowRoomsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListAllowRooms" />
+  </wsdl:message>
+  <wsdl:message name="ListAllowRoomsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListAllowRoomsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="KanriServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistEnter">
+      <wsdl:input message="tns:RegistEnterSoapIn" />
+      <wsdl:output message="tns:RegistEnterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistExit">
+      <wsdl:input message="tns:RegistExitSoapIn" />
+      <wsdl:output message="tns:RegistExitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GateEnter">
+      <wsdl:input message="tns:GateEnterSoapIn" />
+      <wsdl:output message="tns:GateEnterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GateExit">
+      <wsdl:input message="tns:GateExitSoapIn" />
+      <wsdl:output message="tns:GateExitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEnterPerson">
+      <wsdl:input message="tns:GetEnterPersonSoapIn" />
+      <wsdl:output message="tns:GetEnterPersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonInfo">
+      <wsdl:input message="tns:GetPersonInfoSoapIn" />
+      <wsdl:output message="tns:GetPersonInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurposes">
+      <wsdl:input message="tns:GetPurposesSoapIn" />
+      <wsdl:output message="tns:GetPurposesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRooms">
+      <wsdl:input message="tns:GetRoomsSoapIn" />
+      <wsdl:output message="tns:GetRoomsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PutCreatedCard">
+      <wsdl:input message="tns:PutCreatedCardSoapIn" />
+      <wsdl:output message="tns:PutCreatedCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsThisAllow">
+      <wsdl:input message="tns:IsThisAllowSoapIn" />
+      <wsdl:output message="tns:IsThisAllowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllowEnterRoom">
+      <wsdl:input message="tns:AllowEnterRoomSoapIn" />
+      <wsdl:output message="tns:AllowEnterRoomSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CountEnteredPerson">
+      <wsdl:input message="tns:CountEnteredPersonSoapIn" />
+      <wsdl:output message="tns:CountEnteredPersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistRoom">
+      <wsdl:input message="tns:ExistRoomSoapIn" />
+      <wsdl:output message="tns:ExistRoomSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListAllowRooms">
+      <wsdl:input message="tns:ListAllowRoomsSoapIn" />
+      <wsdl:output message="tns:ListAllowRoomsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="KanriServiceSoap" type="tns:KanriServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistEnter">
+      <soap:operation soapAction="http://tempuri.org/RegistEnter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistExit">
+      <soap:operation soapAction="http://tempuri.org/RegistExit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GateEnter">
+      <soap:operation soapAction="http://tempuri.org/GateEnter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GateExit">
+      <soap:operation soapAction="http://tempuri.org/GateExit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEnterPerson">
+      <soap:operation soapAction="http://tempuri.org/GetEnterPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonInfo">
+      <soap:operation soapAction="http://tempuri.org/GetPersonInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurposes">
+      <soap:operation soapAction="http://tempuri.org/GetPurposes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRooms">
+      <soap:operation soapAction="http://tempuri.org/GetRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutCreatedCard">
+      <soap:operation soapAction="http://tempuri.org/PutCreatedCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsThisAllow">
+      <soap:operation soapAction="http://tempuri.org/IsThisAllow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllowEnterRoom">
+      <soap:operation soapAction="http://tempuri.org/AllowEnterRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountEnteredPerson">
+      <soap:operation soapAction="http://tempuri.org/CountEnteredPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistRoom">
+      <soap:operation soapAction="http://tempuri.org/ExistRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListAllowRooms">
+      <soap:operation soapAction="http://tempuri.org/ListAllowRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="KanriServiceSoap12" type="tns:KanriServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistEnter">
+      <soap12:operation soapAction="http://tempuri.org/RegistEnter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistExit">
+      <soap12:operation soapAction="http://tempuri.org/RegistExit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GateEnter">
+      <soap12:operation soapAction="http://tempuri.org/GateEnter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GateExit">
+      <soap12:operation soapAction="http://tempuri.org/GateExit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEnterPerson">
+      <soap12:operation soapAction="http://tempuri.org/GetEnterPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetPersonInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurposes">
+      <soap12:operation soapAction="http://tempuri.org/GetPurposes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRooms">
+      <soap12:operation soapAction="http://tempuri.org/GetRooms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutCreatedCard">
+      <soap12:operation soapAction="http://tempuri.org/PutCreatedCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsThisAllow">
+      <soap12:operation soapAction="http://tempuri.org/IsThisAllow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllowEnterRoom">
+      <soap12:operation soapAction="http://tempuri.org/AllowEnterRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountEnteredPerson">
+      <soap12:operation soapAction="http://tempuri.org/CountEnteredPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistRoom">
+      <soap12:operation soapAction="http://tempuri.org/ExistRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListAllowRooms">
+      <soap12:operation soapAction="http://tempuri.org/ListAllowRooms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="KanriService">
+    <wsdl:port name="KanriServiceSoap" binding="tns:KanriServiceSoap">
+      <soap:address location="http://10.7.0.100/accessdb/kanriservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="KanriServiceSoap12" binding="tns:KanriServiceSoap12">
+      <soap12:address location="http://10.7.0.100/accessdb/kanriservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="shift_jis" ?>
+<ROOT>
+<Infomation PARAM="/TYPE:0/VER:5.0/REV:10/FILE:1">
+Roboticsware, Inc. TagEditer5.0 Rev10 Created 2014/08/29 18:40:49
+</Infomation>
+<Common PARAM="">
+</Common>
+<Tag PARAM="">
+<Driver PARAM="">
+<I>"U02#MIT.FZ.C:0,Y,YY,CONNECT,,,,,,1,,,,,,,,,NONE,,1000,,,,,,,,,,,,,,,,0","F01#","CLOSE#X000000"</I>
+<I>"*","*","LOCK#X000002"</I>
+<I>"*","*","UNLOCK#X000001"</I>
+<I>"*","*","OLOCK#M000000"</I>
+<I>"*","*","OUNLOCK#M000001"</I>
+</Driver>
+</Tag>
+<View PARAM="">
+<Main PARAM="">
+</Main>
+<Option PARAM="">
+<Output01 PARAM="Output:+SOURCEIDS=System,Tag,Driver,View,Action,Redundancy,Script2">
+</Output01>
+</Option>
+</View>
+</ROOT>
